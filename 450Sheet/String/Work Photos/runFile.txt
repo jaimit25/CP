@@ -1,0 +1,5 @@
+//to compile this file 
+// 23_findStringInGrid.cpp -o 23_findStringInGrid
+
+//to run executable file
+ // ./23_findStringInGrid
