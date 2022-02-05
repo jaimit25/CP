@@ -1,9 +1,11 @@
 #include<iostream>
+#include"ArrayC++Template.h"
 using namespace std;
+
+
 int main(){
 
-    cout<<"Hello World"<<endl;
-    
-    return 0;
+	check();
 
+	return 0;
 }

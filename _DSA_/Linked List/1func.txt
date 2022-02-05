@@ -1,0 +1,13 @@
+int Length(struct Node *p);
+void Display(struct Node *first);
+struct Node *Search(struct Node *p, int key);
+struct Node *RSearch(struct Node *p, int key);
+void SearchImproved(struct Node *p, int key);
+void Create(int A[], int n);
+void Insert(struct Node *p, int index, int x);
+void InsertSortedList(struct Node *p, int val);
+void InsertSortedListLecture(struct Node *p, int val);
+int Delete(struct Node *p , int index);
+int Length(struct Node *p);
+void ReverseLinkListElement(struct Node *p);
+int isLoop(struct Node *f);

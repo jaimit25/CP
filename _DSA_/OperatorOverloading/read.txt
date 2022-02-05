@@ -1,0 +1,9 @@
+In C++, we can make operators to work for user defined classes. This means C++ has the ability to provide the operators with a special meaning for a data type, this ability is known as operator overloading.
+For example, we can overload an operator ‘+’ in a class like String so that we can concatenate two strings by just using +.
+Other example classes where arithmetic operators may be overloaded are Complex Number, Fractional Number, Big Integer, etc.
+
+
+In C++, stream insertion operator “<<” is used for output and extraction operator “>>” is used for input. 
+We must know the following things before we start overloading these operators. 
+1) cout is an object of ostream class and cin is an object of istream class 
+2) These operators must be overloaded as a global function. And if we want to allow them to access private data members of the class, we must make them friend.

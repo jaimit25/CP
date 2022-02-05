@@ -1,0 +1,20 @@
+Header file consist of predefined function declaration and it does not contain the code for predefined function.
+Code for predefined function is in library files not header file.
+
+
+Cout << ---> this is Insertion operator which sends data to output stream
+Cin >> ---> this is extraction operator which recieves data from input stream
+Ie. keyboard
+
+
+Whenever we write language code the preprocess copy all the function code from header file to wherever we use the function like printf() code is copied from header file stdio.h-- library to our program code.
+Then it is converted to name.i extension which is then converted to .obj file which is still not understandable by cpu so we use linked to convert .obj file to .exe file which Is understandable by Machine.
+
+
+Header File contains declaration
+It consist of predefined function declaration macros variables and object.
+ endl- is manipulator and not a keyword it is use to take cursor to next line.
+Its declaration is in header file
+
+Action statement include cout,clrscr,cin,getch
+
