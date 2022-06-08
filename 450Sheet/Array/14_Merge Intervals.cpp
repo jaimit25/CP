@@ -40,9 +40,9 @@ public:
 	// 	return mergedintervals;
 	// }
 
-	vector<vector<int>> merge(vector<vector<int>> &intervals)
+	vector<vector<int > > merge(vector<vector<int > > &intervals)
 	{
-		vector<vector<int>> mergedIntervals;
+		vector<vector<int > > mergedIntervals;
 		int i = 0;
 		if (intervals.size() == 0)
 			return mergedIntervals;

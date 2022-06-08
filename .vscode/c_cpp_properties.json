@@ -4,8 +4,8 @@
             "name": "Mac C++/C",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/local/include"
-                // "/Library/Developer/CommandLineTools/usr/include/c++/v1"
+                "/usr/local/include",
+                "/usr/local/include/bits"
             ],
             "defines": [],
             "macFrameworkPath": [
