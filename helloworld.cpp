@@ -168,8 +168,8 @@ void print_Array(int *arr, int n)
 //     if (intervals.size() == 0)
 //         return mergedIntervals;
 
-//     vector<int> tempInterval = intervals[0];
 //     sort(intervals.begin(), intervals.end());
+//     vector<int> tempInterval = intervals[0];
 //     for (auto it : intervals)
 //     {
 
