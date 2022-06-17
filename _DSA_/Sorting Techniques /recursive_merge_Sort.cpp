@@ -69,7 +69,7 @@ void recursiveMergeSort(int A[], int l, int h)
 	{
 		mid = (l + h) / 2;
 		recursiveMergeSort(A, l, mid);
-		recursiveMergeSort(A, mid + 1, mid);
+		recursiveMergeSort(A, mid + 1, h);
 		Merge(A, l, mid, h);
 	}
 }
