@@ -59,6 +59,10 @@ public:
 				}
 			}
 		}
+
+		for(int i = 0 ; i < m ; i++){
+        arr1[n+i] = arr2[i];
+    	}
 	}
 
 	// void merge(int arr1[], int arr2[], int n, int m)

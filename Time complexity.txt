@@ -1,0 +1,6 @@
+1.n=10^5- most used constraint in competitve programming , three types of complexity is allowed in these type of questions . fist O(n) ,O(nlogn) and O(nrootn) , you have to use fast io in O(nrootn) complexity.
+2.n=10^6- only two types of complexity is allowed here, first O(n) and O(nlogn).
+3.n>=10^9- you can use maximum of O(logn) complexity.
+4.n=10^3- these kinds of questions requires O(n), O(n^2) or O(n^2logn) complexity.
+5.n=10^2- you can use O(n), O(n^2), O(n^2logn), O(n^3) orO(n^3logn) complexity.
+6.n<=20 - These question requires exponential complexity. mostly bitmasking questions are given in these ranges of n.z
