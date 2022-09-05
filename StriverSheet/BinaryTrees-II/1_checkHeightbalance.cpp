@@ -22,49 +22,50 @@ void print_preorderTraversal(TreeNode *root)
     }
 }
 
-int getHeight(TreeNode *root)
-{
+// int getHeight(TreeNode *root)
+// {
 
-    if (!root)
-        return 0;
-    int left = getHeight(root->left);
-    int right = getHeight(root->right);
-    return max(left, right) + 1;
-}
+//     if (!root)
+//         return 0;
+//     int left = getHeight(root->left);
+//     int right = getHeight(root->right);
+//     return max(left, right) + 1;
+// }
 
-bool CheckBalance(TreeNode *root)
-{
+// bool CheckBalance(TreeNode *root)
+// {
 
-    int lh = getHeight(root->left);
-    int rh = getHeight(root->right);
-    cout << "left and right height\(" << root->val << "\) : " << lh << " " << rh << endl;
-    if (abs(lh - rh) > 1)
-        return false;
-    return true;
-}
+//     int lh = getHeight(root->left);
+//     int rh = getHeight(root->right);
+//     cout << "left and right height\(" << root->val << "\) : " << lh << " " << rh << endl;
+//     if (abs(lh - rh) > 1)
+//         return false;
+//     return true;
+// }
 
-//o(n2);
-bool isBalanced(TreeNode *root)
-{
+// //o(n2);
+// bool isBalanced(TreeNode *root)
+// {
 
-    bool result;
+//     bool result;
 
-    // base cases :
-    // Leaf Node
-    if (!root)
-        return true;
-    // Current Node is not Balanced
-    if (!CheckBalance(root))
-        return false;
+//     // base cases :
+//     // Leaf Node
+//     if (!root)
+//         return true;
+//     // Current Node is not Balanced
+//     if (!CheckBalance(root))
+//         return false;
 
-    bool res_l = isBalanced(root->left);
-    bool res_r = isBalanced(root->right);
+//     bool res_l = isBalanced(root->left);
+//     bool res_r = isBalanced(root->right);
 
-    return res_l && res_r;
-}
+//     return res_l && res_r;
+// }
 
 
 //optimized approach o(n)
+int dfs(TreeNode*);
 bool isBalanced(TreeNode *root)
 {
     if(dfs(root) == -1 )    return false;
