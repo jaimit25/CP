@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <climits>
 using namespace std;
 
 class TreeNode {
@@ -60,50 +61,56 @@ void print_postorderTraversal(TreeNode *root) {
     cout << root->val << " ";
   }
 }
-class BSTIterator {
-private:
-  stack<TreeNode *> st;
-  bool reverse = false;
-  void push(TreeNode *root) {
-    while (root != nullptr) {
-      st.push(root);
-      root = !reverse ? root->left : root->right;
-    }
+
+int helper(TreeNode *root, TreeNode *mainRoot, int &maxm, int minVal,
+           int maxVal) {
+
+  if (!root)
+    return 0;
+  int left = 0, right = 0;
+
+  if (root) {
+    left = helper(root->left, mainRoot, maxm, minVal, root->val);
+    right = helper(root->right, mainRoot, maxm, root->val, maxVal);
   }
 
-public:
-  BSTIterator(TreeNode *root, bool reverse = false) : reverse(reverse) {
-    push(root);
+  if (root == mainRoot) {
+    if (left < 0 && right < 0)
+      return 0;
+    return maxm;
   }
-  int next() {
-    TreeNode *top = st.top();
-    st.pop();
-    push(!reverse ? top->right : top->left);
-    return top->val;
-  }
-};
 
-class Solution {
-public:
-  bool findTarget(TreeNode *root, int k) {
-    BSTIterator leftItr(root), rightItr(root, true);
-    int left = leftItr.next(), right = rightItr.next();
-    while (left < right) {
-      if (left + right == k)
-        return true;
-      if (left + right < k)
-        left = leftItr.next();
-      else
-        right = rightItr.next();
-    }
-    return false;
-  }
-};
+//   if (root->val <= minVal || root->val >= maxVal)
+    maxm = max(maxm, left + right + root->val);
 
- int main(){
+  if (left + right + root->val < 0)
+    return 0;
+  return left + right + root->val;
+}
 
+int maxSumBST(TreeNode *root) {
+  int maxm = 0;
+  int ans = helper(root, root, maxm, INT_MIN, INT_MAX);
+  return ans;
+}
 
-  
+int main() {
+
+  TreeNode *root = new TreeNode(1);
+
+  root->left = new TreeNode(4);
+  root->right = new TreeNode(3);
+
+  root->left->left = new TreeNode(2);
+  root->left->right = new TreeNode(4);
+
+  root->right->left = new TreeNode(2);
+  root->right->right = new TreeNode(5);
+
+  root->right->right->left = new TreeNode(4);
+  root->right->right->right = new TreeNode(6);
+
+  cout << maxSumBST(root) << endl;
 
   return 0;
- }
+}
