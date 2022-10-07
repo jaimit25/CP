@@ -31,29 +31,6 @@ vector<int> bfs(int V, vector<int> adj[Length]) {
   }
 
   return ans;
-
-  //   // Initial set up
-  //   int vis[10] = {0};
-  //   vector<int> ans;
-  //   queue<int> q;
-  //   q.push(0);
-  //   vis[0] = 1;
-
-  //   // Looping
-  //   while (!q.empty()) {
-  //     int node = q.front();
-  //     ans.push_back(node);
-  //     q.pop();
-
-  //     for (auto it : adj[node]) {
-  //       if (!vis[it]) {
-  //         q.push(it);
-  //         vis[it] = 1;
-  //       }
-  //     }
-  //   }
-
-  //   return ans;
 }
 
 int main() {
