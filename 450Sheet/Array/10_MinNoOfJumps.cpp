@@ -23,11 +23,9 @@ public:
 		for (int i = 1; i < n; i++)
 		{
 			if( i == n-1)
-				return jump; //last index
+				return jump; // returning minimum number of jumps
 
-			reachable = max(reachable , arr[i] + i);	
-
-
+			reachable = max(reachable , arr[i] + i);
 			step--;
 			if(step == 0){
 				jump++;

@@ -5,10 +5,14 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
 public:
+ // flag variable to be true when there is cycle in the graph
   int flag = 0;
 
   void dfs(int v, int parent, vector<int> &vist, vector<int> adj[]) {
+
+    //visiting a node node mark as 1
     vist[v] = 1;
+
     for (auto u : adj[v]) {
       if (vist[u] == 0) {
         dfs(u, v, vist, adj);

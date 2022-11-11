@@ -56,9 +56,6 @@ public:
 			else
 			{
 				temp[k++] = arr[j++];
-
-				/* this is tricky -- see above
-				explanation/diagram for merge()*/
 				inv_count = inv_count + (mid - i);
 			}
 		}
