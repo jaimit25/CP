@@ -86,9 +86,12 @@ int ninjaTraining_SpaceOptimization(int n, vector<vector<int>> &points) {
 int32_t main() {
 
   vector<vector<int>> points = {{2, 1, 3}, {3, 4, 6}, {10, 1, 6}, {8, 3, 7}};
-  cout << ninjaTraining(points.size(), points) << endl;
-  cout << ninjaTraining_tabulation(points.size(), points) << endl;
-  cout << ninjaTraining_SpaceOptimization(points.size(), points) << endl;
+  cout << "Recursion and Memoization : " << ninjaTraining(points.size(), points)
+       << endl;
+  cout << "Tabulation : " << ninjaTraining_tabulation(points.size(), points)
+       << endl;
+  cout << "Space Optimization(Tabulation) : "
+       << ninjaTraining_SpaceOptimization(points.size(), points) << endl;
 
   return 0;
 }
