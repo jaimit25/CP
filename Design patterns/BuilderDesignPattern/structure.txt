@@ -1,0 +1,16 @@
+product (which client wants suppose desktop or computer)
+			|
+		     Builder() 
+	// Desktop has Ram and other parts (Builder is an interface)
+			| 
+		 ConcreteBuilder() 
+	// how much gb for hp desktop Ram 
+		 	| 
+		     Director() 
+	// responsible for Actual Generation of the product
+	// steps to be followed to build the product
+	// Optional component (can be written in main function as well)
+	
+
+
+

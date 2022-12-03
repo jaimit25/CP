@@ -1,0 +1,22 @@
+Creational design patterns : (Create class and initialize them)
+
+- Factory
+- Abstract factory 
+- Singleton
+- Builder Design Pattern
+
+Structural Design patterns : (Organize Different class together to a single structure to get a functionality)
+
+- Bridge 
+- Adaptive
+- Composite
+
+Behavioral Design patterns : (Interaction of different classes)
+
+- Interpreter
+- Stratergy
+- Observer
+
+
+
+

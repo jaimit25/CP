@@ -1,0 +1,5 @@
+client <-> create and vechicle and give it back to client
+
+
+Recap : Client dosent need to know the implementation of the subclass 
+	it should directly use the superclass(vehicle_factory) to do it's thing.

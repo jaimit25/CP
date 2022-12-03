@@ -1,0 +1,14 @@
+Defination : Used when we are developing complex Object or many Configuration Object.
+
+Example : 
+We have House (super class)
+	House has Rooms, Doors, Interior. (Common between Every house) (Sub class)
+		(House can be - Igloo , Wood , Cement (Not common things))
+			Igloo - can have multiple configurations 
+
+[so for the sub class there are different configurations which is needed to be done] ie for house of type igloo interior would be different, door would be different etc.
+
+
+			
+
+

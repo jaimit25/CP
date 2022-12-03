@@ -2,103 +2,117 @@
 #include <string>
 using namespace std;
 
-// Code for Graph visualization with Flood Fill ALgorithm( $4 directions - top,right,bottom,left )
-
-string getPx(int dt, int flag) {
-  if (flag == 1) {
-    return to_string(dt);
+void printv(vector<int> v) {
+  for (auto it : v) {
+    cout << it << " ";
   }
-  if (dt == 0)
-    return ".";
-  else if (dt == 2)
-    return "#";
-  else
-    return " ";
-}
-
-void printImage(vector<vector<int>> img, int flag) {
   cout << endl;
-  for (auto list : img) {
-    for (auto px : list) {
+  return;
+}
 
-      cout << getPx(px, flag) << " ";
+ int getfac(int n){
+        int ans = 1; 
+        for(int i = 1; i <= n ; i++){
+            ans = ans*i;
+        }
+        return ans;
     }
-    cout << endl;
-  }
+    
 
-  for (int i = 0; i < img[0].size(); i++)
-    cout << "_ ";
-  cout << endl;
-}
 
-void color(int row, int col, vector<vector<int>> &updated_image,
-           vector<vector<int>> image, int newColor, int delRow[], int delCol[],
-           int iniC) {
+// void printSub(int i, vector<int> &vec, vector<int> &seq) {
+//   if (i >= vec.size()) {
 
-  updated_image[row][col] = newColor;
+//     printv(seq);
+//     // seq.clear();
+//     return;
+//   }
 
-  int n = image.size();    // height
-  int m = image[0].size(); // width
+//   seq.push_back(vec[i]);
+//   printSub(i + 1, vec, seq);
 
-  for (int i = 0; i < 4; i++) {
-    int new_row = row + delRow[i];
-    int new_col = col + delCol[i];
-    if (new_row >= 0 && new_row < n && new_col >= 0 && new_col < m &&
-        image[new_row][new_col] == iniC && // if new point color is same as
-                                           // initial color then Re-Paint it
-        updated_image[new_row][new_col] !=
-            newColor // if new point is not updated by any node
-    ) {
-      color(new_row, new_col, updated_image, image, newColor, delRow, delCol,
-            iniC);
+//   seq.pop_back();
+//   printSub(i + 1, vec, seq);
+// }
+
+
+// int getMaximumGenerated(int n) {
+//         if(n == 0) return 0;
+//         if(n == 1 ) return 1;
+//         vector<int> v(n+1);
+//         v[0] = 0 ; 
+//         v[1] = 1 ;
+        
+//         int mx = INT_MIN;
+//         int temp = 0 ;
+//         for(int i = 1 ; i <= n ; i++){
+            
+//             int l = 2*i;
+//             int k = l+1;
+            
+//             //out of bound
+//             if(l > n) break;
+//             v[l] = v[i];
+//             mx = max(v[l],mx);
+            
+//             //out of bound
+//             if(k > n) break;
+//             v[k] = v[i] + v[i+1];
+//             mx = max(v[k],mx);
+//         }
+//         return mx;
+        
+//     }
+
+// int f(int i,vector<int> &cost){
+//         int n = cost.size();
+//         //base case
+//         if( i == n-1 || i == n-2) return 0;
+        
+//         int one_stp = cost[i] + f(i+1,cost);
+        
+//         int two_stp = INT_MAX;
+//         if(i+2 < cost.size()){
+//              two_stp = cost[i] + f(i+2,cost);
+//         }        
+            
+//         return min(one_stp,two_stp);        
+// }
+    
+// int minCostClimbingStairs(vector<int>& cost) {
+//        int i = 0 ;
+//         if(cost[0] < cost[1]){
+//            i = 0 ;
+//         }
+//         else i = 1 ;
+//          cout<<"i : "<<i<<endl;
+//         return f(i,cost);
+// }
+
+vector<int> getRow(int n) {
+      vector<int> temp(n+1),v(n+1);
+      temp[0] = 1;
+
+       
+    
+      
     }
-  }
-}
-
-vector<vector<int>> floodFill(vector<vector<int>> image, int start_row,
-                              int start_col, int newColor) {
-
-  int initial_color = image[start_row][start_col];
-  vector<vector<int>> updated_image = image;
-  int delRow[] = {-1, 0, +1, 0};
-  int delCol[] = {0, +1, 0, -1};
-
-  color(start_row, start_col, updated_image, image, newColor, delRow, delCol,
-        initial_color);
-
-  return updated_image;
-}
-
-vector<vector<int>> processWithOne(vector<vector<int>> image, int newColor) {
-  printImage(image, 0);
-
-  vector<vector<int>> updated_Image = floodFill(image, 0, 0, newColor);
-
-  for (int i = 0; i < image.size(); i++) {
-    for (int j = 0; j < image[0].size(); j++) {
-      if (image[i][j] == 1) {
-        updated_Image = floodFill(updated_Image, i, j, newColor);
-      }
-    }
-  }
-  // updated_Image = floodFill(updated_Image, 0, 9, 2);
-
-  return updated_Image;
-}
 
 int main() {
 
-  vector<vector<int>> image = {
-      // x : 9 , y : 10
-      {1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {1, 0, 1, 0, 1, 0, 1, 0, 1, 1},
-      {0, 1, 1, 1, 0, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-      {0, 1, 1, 1, 1, 1, 1, 1, 0, 1}, {0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-      {1, 0, 1, 1, 1, 1, 1, 0, 1, 1}, {1, 1, 0, 1, 1, 1, 0, 1, 1, 1},
-      {1, 1, 1, 0, 1, 0, 1, 1, 1, 1}, {1, 1, 1, 1, 0, 1, 1, 1, 1, 1}};
-  int newColor = 3;
-  vector<vector<int>> updated_Image = processWithOne(image, newColor);
-  printImage(updated_Image, 0);
-  printImage(updated_Image, 1);
+#ifndef ONLINE_JUDGE
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
+#endif
+
+// cout<<getMaximumGenerated(7)<<endl;
+// vector<int> v = {10,15,20};
+// cout<<minCostClimbingStairs(v)<<endl;
+
+vector<int > ans  = getRow(14);
+printv(ans);
+
+
 
   return 0;
 }

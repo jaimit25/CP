@@ -1,0 +1,7 @@
+
+#defination : Create a single instance of the class (stop User to create an object of a class Multiple Times and use previous instance everytime).
+ 
+
+ #usecases : 
+ * when we have multiple db and we want only one database to be used by the system.
+ * When we have multiple configuration and we want only one configuraation to be used.
