@@ -1,0 +1,6 @@
+#It is crreational design pattern (matches with Factory design Pattern)
+ - Abstract will create factories and factories will create the objects.(Family of classes)
+	 - factory will create factory of toyota or any other car factory
+	 
+
+

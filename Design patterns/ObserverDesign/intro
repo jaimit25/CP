@@ -1,0 +1,7 @@
+use case: 
+	Login into some device and all other device get the notification.
+	send mesasge in group and all other people in the group would be notified.
+
+
+Define : 
+	For a single thing mutiple task has to be notified or multiple thing has to be done.
