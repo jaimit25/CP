@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <string>
+#define v2 vector<vector<int>>
 using namespace std;
 
 void printv(vector<int> v) {
@@ -7,96 +8,64 @@ void printv(vector<int> v) {
     cout << it << " ";
   }
   cout << endl;
-  return;
 }
 
- int getfac(int n){
-        int ans = 1; 
-        for(int i = 1; i <= n ; i++){
-            ans = ans*i;
-        }
-        return ans;
+void print2v(vector<vector<int>> v) {
+  for (auto it : v) {
+    for (auto it2 : it) {
+      cout << it2 << " ";
     }
-    
+    cout << endl;
+  }
+  cout << "____________________" << endl;
+}
 
+int f(int day, int last, v2 &task, v2 &dp) {
 
-// void printSub(int i, vector<int> &vec, vector<int> &seq) {
-//   if (i >= vec.size()) {
+  // base case
+  // if (day == -1)
+  //   return 0;
 
-//     printv(seq);
-//     // seq.clear();
-//     return;
-//   }
-
-//   seq.push_back(vec[i]);
-//   printSub(i + 1, vec, seq);
-
-//   seq.pop_back();
-//   printSub(i + 1, vec, seq);
-// }
-
-
-// int getMaximumGenerated(int n) {
-//         if(n == 0) return 0;
-//         if(n == 1 ) return 1;
-//         vector<int> v(n+1);
-//         v[0] = 0 ; 
-//         v[1] = 1 ;
-        
-//         int mx = INT_MIN;
-//         int temp = 0 ;
-//         for(int i = 1 ; i <= n ; i++){
-            
-//             int l = 2*i;
-//             int k = l+1;
-            
-//             //out of bound
-//             if(l > n) break;
-//             v[l] = v[i];
-//             mx = max(v[l],mx);
-            
-//             //out of bound
-//             if(k > n) break;
-//             v[k] = v[i] + v[i+1];
-//             mx = max(v[k],mx);
-//         }
-//         return mx;
-        
-//     }
-
-// int f(int i,vector<int> &cost){
-//         int n = cost.size();
-//         //base case
-//         if( i == n-1 || i == n-2) return 0;
-        
-//         int one_stp = cost[i] + f(i+1,cost);
-        
-//         int two_stp = INT_MAX;
-//         if(i+2 < cost.size()){
-//              two_stp = cost[i] + f(i+2,cost);
-//         }        
-            
-//         return min(one_stp,two_stp);        
-// }
-    
-// int minCostClimbingStairs(vector<int>& cost) {
-//        int i = 0 ;
-//         if(cost[0] < cost[1]){
-//            i = 0 ;
-//         }
-//         else i = 1 ;
-//          cout<<"i : "<<i<<endl;
-//         return f(i,cost);
-// }
-
-vector<int> getRow(int n) {
-      vector<int> temp(n+1),v(n+1);
-      temp[0] = 1;
-
-       
-    
-      
+  if (day == 0) {
+    int maxm = 0;
+    for (int i = 0; i < 3; i++) {
+      if (i != last) {
+        maxm = max(maxm, task[day][i]);
+      }
     }
+    return maxm;
+  }
+
+  if (dp[day][last] != -1)
+    return dp[day][last];
+
+  int maxm = 0;
+  for (int i = 0; i < 3; i++) {
+    if (i != last) {
+      int p = task[day][i] + f(day - 1, i, task, dp);
+      maxm = max(maxm, p);
+      cout << (task[day][i]) << endl;
+    }
+  }
+
+  dp[day][last] = maxm;
+  print2v(dp);
+  return (maxm);
+}
+
+int test(int d, v2 &task) {
+
+  if (d == -1)
+    return 0;
+
+  int maxm = 0;
+  for (int i = 0; i < 3; i++) {
+    int p = test(d - 1, task) + task[d][i];
+    // if( d == 3 ) cout<<p<<endl;
+    maxm = max(maxm, p);
+  }
+  return maxm;
+}
 
 int main() {
 
@@ -105,14 +74,14 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
 
-// cout<<getMaximumGenerated(7)<<endl;
-// vector<int> v = {10,15,20};
-// cout<<minCostClimbingStairs(v)<<endl;
+  v2 task = {{2, 1, 3}, {3, 4, 6}, {10, 1, 6}, {8, 3, 7}};
+  int n = task.size();
+  // v2 dp(n, vector<int>(4, -1));
 
-vector<int > ans  = getRow(14);
-printv(ans);
+  // cout << f(n - 1, 3, task, dp) << endl;
 
 
+  cout << test(n - 1, task) << endl;
 
   return 0;
 }

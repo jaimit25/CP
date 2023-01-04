@@ -17,6 +17,7 @@ int helper(int i, vector<int> H, vector<int> &dp) {
   return dp[i] = min(take_one_step, take_two_step);
 }
 
+
 int frogJump(int n, vector<int> &heights) {
   vector<int> dp(n + 1, -1);
   return helper(n - 1, heights, dp);

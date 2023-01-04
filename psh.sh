@@ -1,5 +1,6 @@
 #!/bin/bash
 function psh(){
+	rm test
 	echo "Enter Message :"
 	read mssg
 	dt=$(date)
