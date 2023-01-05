@@ -1,6 +1,11 @@
 #!/bin/bash
 function psh(){
+
+	# clear the contents of the test file
 	rm test
+	echo -n "" > test.cpp
+
+	# Process for Github - push
 	echo "Enter Message :"
 	read mssg
 	dt=$(date)
