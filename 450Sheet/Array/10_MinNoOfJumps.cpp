@@ -1,75 +1,76 @@
-#include <iostream>
 #include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
-class Solution
-{
+class Solution {
 
 public:
-	int minJumps(int *arr, int n)
-	{
-		if (n <= 1)
-			return 0;
+  int minJumps(int *arr, int n) {
 
-		if (arr[0] == 0)
-			return -1;
+    if (arr[0] == 0 && n > 1)
+      return -1;
+    if (n == 1)
+      return 0;
+    int far = 0;
+    int jmp = 0;
+    int curr = 0;
 
-		int reachable = arr[0];
-		int step = arr[0];
-		int jump = 1;
+    for (int i = 0; i < n - 1; i++) {
+      curr = max(curr, arr[i] + i);
+      if (far == i) {
+        far = curr;
+        jmp++;
+      }
+    }
 
+    if (far < n - 1)
+      return -1;
 
-		for (int i = 1; i < n; i++)
-		{
-			if( i == n-1)
-				return jump; // returning minimum number of jumps
+    return jmp;
 
-			reachable = max(reachable , arr[i] + i);
-			step--;
-			if(step == 0){
-				jump++;
-				if (i > reachable)
-				return -1;
-				step = reachable - i;
-			}
+    // if (n <= 1)
+    // 	return 0;
 
+    // if (arr[0] == 0)
+    // 	return -1;
 
-			// if (i > reachable)
-			// 	return -1;
-			// i + arr[i]  - it will calculate the new highest index we can reach
-			// if (i + arr[i] > reachable)
-			// {
-			// 	reachable = i + arr[i];
+    // int reachable = arr[0];
+    // int step = arr[0];
+    // int jump = 1;
 
-			// 	// we will not increase count value if "i + arr[i]" is greater then array max index
-			// 	if ((i + arr[i]) < (n - 1))
-			// 		jump++;
-			// }
-			// reachable = max(reachable, i + arr[i]);
-		}
+    // for (int i = 1; i < n; i++)
+    // {
+    // 	if( i == n-1)
+    // 		return jump; // returning minimum number of jumps
 
-		return -1;
+    // 	reachable = max(reachable , arr[i] + i);
+    // 	step--;
+    // 	if(step == 0){
+    // 		jump++;
+    // 		if (i > reachable)
+    // 		return -1;
+    // 		step = reachable - i;
+    // 	}
+    // }
 
-		// return (jump);
-	}
+    // return -1;
+  }
 };
 
-int main()
-{
+int main() {
 
-	Solution obj;
+  Solution obj;
 
-	int n;
-	cin >> n;
-	int A[n];
+  int n;
+  cin >> n;
+  int A[n];
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
-	}
+  for (int i = 0; i < n; i++) {
+    cin >> A[i];
+  }
 
-	cout << obj.minJumps(A, n) << endl;
+  cout << obj.minJumps(A, n) << endl;
 
-	return 0;
+  return 0;
 }
