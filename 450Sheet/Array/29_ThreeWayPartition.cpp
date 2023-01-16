@@ -1,84 +1,32 @@
-// template link : https://www.codingbroz.com/fast-cpp-template-using-macros/
+
 #include <iostream>
-#include <bits/stdc++.h>
-#include <unordered_map>
-#include <climits>
-
-typedef long long LL;
-typedef pair<int, int> pii;
-typedef pair<LL, LL> pll;
-typedef pair<string, string> pss;
-typedef vector<int> vi;
-typedef vector<vi> vvi;
-typedef vector<pii> vii;
-typedef vector<LL> vl;
-typedef vector<vl> vvl;
-
-#define FOR(a, b, c) for (int(a) = (b); (a) < (c); ++(a))
-#define FORN(a, b, c) for (int(a) = (b); (a) <= (c); ++(a))
-#define FORD(a, b, c) for (int(a) = (b); (a) >= (c); --(a))
-#define FORSQ(a, b, c) for (int(a) = (b); (a) * (a) <= (c); ++(a))
-#define FORC(a, b, c) for (char(a) = (b); (a) <= (c); ++(a))
-#define FOREACH(a, b) for (auto &(a) : (b))
-#define REP(i, n) FOR(i, 0, n)
-#define REPN(i, n) FORN(i, 1, n)
-#define MAX(a, b) a = max(a, b)
-#define MIN(a, b) a = min(a, b)
-#define SQR(x) ((LL)(x) * (x))
-#define RESET(a, b) memset(a, b, sizeof(a))
-#define fi first
-#define se second
-#define mp make_pair
-#define pb push_back
-#define ALL(v) v.begin(), v.end()
-#define ALLA(arr, sz) arr, arr + sz
-#define SIZE(v) (int)v.size()
-#define SORT(v) sort(ALL(v))
-#define REVERSE(v) reverse(ALL(v))
-#define SORTA(arr, sz) sort(ALLA(arr, sz))
-#define REVERSEA(arr, sz) reverse(ALLA(arr, sz))
-#define PERMUTE next_permutation
-#define TC(t) while (t--)
-
-// DUTCH FLAG ALGORTIHM  - SIMILAR APPROACH
-
 using namespace std;
 
-class Solution
-{
+void threeWayPartition(int arr[], int n, int lowVal, int highVal) {
+  int start = 0, end = n - 1;
 
-public:
-	void threeWayPartition(vector<int> &array, int a, int b)
-	{
-		// code here
-		int l = 0;
-		int r = array.size() - 1;
-		int i = 0;
+  for (int i = 0; i <= end;) {
+    if (arr[i] < lowVal) {
+      if (i == start) {
+        start++;
+        i++;
+      } else
+        swap(arr[i++], arr[start++]);
+    } else if (arr[i] > highVal)
+      swap(arr[i], arr[end--]);
 
-		
-	}
-};
+    else
+      i++;
+  }
+}
 
-int main()
-{
+int main() {
+  int arr[] = {1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32};
+  int n = sizeof(arr) / sizeof(arr[0]);
 
-	Solution obj;
-	vector<int> v;
+  threeWayPartition(arr, n, 10, 20);
 
-	int sz;
-	cin >> sz;
-	int a, b;
-	cin >> a;
-	cin >> b;
-	int temp;
-
-	for (int i = 0; i < sz; i++)
-	{
-		cin >> temp;
-		v.push_back(temp);
-	}
-
-	cout << obj.threeWayPartition(v, a, b) << endl;
-
-	return 0;
+  cout << "Modified array \n";
+  for (int i = 0; i < n; i++)
+    cout << arr[i] << " ";
 }

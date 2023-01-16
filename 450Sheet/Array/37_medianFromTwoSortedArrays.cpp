@@ -61,8 +61,10 @@ public:
     while (low <= high)
     {
       // int cut1 = (low + high) >> 1;
-      int cut1 = (low + high) / 2;
-      int cut2 = (low + high + 1) / 2 - cut1;
+
+      // cut 1 and cut 2 is not the index number of "middle element" but instead the number of elements in the left side or array's in left partition. - refer notes. or keerti maam video
+      int cut1 = (low + high) / 2; //here high is the number of element in in num1 array. but when using high as " n - size of num1" insted of n-1 then afterwards we have to take (mid-1) instead of just mid.
+      int cut2 = (n1+n2 + 1) / 2 - cut1; // (no of element on left side of partition - no of elements selected in num2)
 
       int left1 = cut1 == 0 ? INT32_MIN : num1[cut1 - 1];
       int left2 = cut2 == 0 ? INT32_MIN : num2[cut2 - 1];

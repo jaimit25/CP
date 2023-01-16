@@ -90,3 +90,80 @@ int main()
 
 	return 0;
 }
+
+
+
+
+
+//for left side as (low = low ,  mid = mid) ,right side as (low = mid+1,high = high)  while merging sorted arrays.
+// #include <bits/stdc++.h>
+// #define F first
+// #define S second
+// #define pb push_back
+// #define si set<int>
+// #define vi vector<int>
+// #define pii pair<int, int>
+// #define vpi vector<pii>
+// #define vpp vector<pair<int, pii>>
+// #define mii map<int, int>
+// #define mpi map<pii, int>
+// #define spi set<pii>
+// #define vvi vector<vector<int>>
+
+// using namespace std;
+
+// int ml(vi &a, int l, int m, int h) {
+//   vi temp;
+//   int c = 0;
+//   int i = l, j = m + 1;
+//   while (i <= m && j <= h) {
+//     if (a[i] <= a[j]) {
+//       temp.pb(a[i++]);
+//     } else {
+//       c = c + (m - i + 1);
+//       temp.pb(a[j++]);
+//     }
+//   }
+//   for (; i <= m; i++) {
+//     temp.pb(a[i]);
+//   }
+//   for (; j <= h; j++) {
+//     temp.pb(a[j]);
+//   }
+//   i = l;
+//   for (auto it : temp) {
+//     a[i++] = it;
+//   }
+//   return c;
+// }
+
+// int f(vi &a, int l, int h) {
+
+//   int c = 0;
+//   if (l < h) {
+//     int mid = (l + h) / 2;
+//     c += f(a, l, mid);
+//     c += f(a, mid + 1, h);
+//     c += ml(a, l, mid, h);
+//   }
+
+//   return c;
+// }
+
+// void print(vi &a) {
+//   for (auto it : a) {
+//     cout << it << " ";
+//   }
+//   cout << endl;
+// }
+
+// int main() {
+
+//   freopen("output.txt", "w", stdout);
+// //   vi a = {5, 3, 2, 4, 1};
+// 	vi a = {8, 4, 2, 1};
+//   cout<<f(a, 0, a.size() - 1)<<endl;
+//   print(a);
+
+//   return 0;
+// }
