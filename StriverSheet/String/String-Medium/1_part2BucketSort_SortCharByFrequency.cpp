@@ -15,7 +15,8 @@
 
 #include <algorithm>
 #include <bits/stdc++.h>
-#define vi vector<int>
+#include <cstdio>
+#define vi vector<float>
 
 using namespace std;
 
@@ -31,27 +32,42 @@ void isort(vi &a) {
   int i = 1;
   while (i <= n - 1) {
     int j = i - 1;
-    int temp = a[i];
+    float temp = a[i];
     while (a[j] > temp && j >= 0) {
       a[j + 1] = a[j];
-      j--; 
+      j--;
     }
     a[j + 1] = temp;
     i++;
   }
 }
 
-vector<int> bucketSort(vi &a) {
+vector<float> bucketSort(vi &a) {
   int n = a.size();
   vi ans;
-  
+  vi b[n];
+  for (int i = 0; i < n; i++) {
+    int ind = (n * a[i]);
+    b[ind].push_back(a[i]);
+  }
+  for (int i = 0; i < n; i++) {
+    // sort(b[i].begin(), b[i].end());
+    isort(b[i]);
+  }
+
+  for (int i = 0; i < n; i++) {
+    for (auto it : b[i]) {
+      ans.push_back(it);
+    }
+  }
 
   return ans;
 }
 
 int main() {
-  //   vi a = {2, 1, 0, 2};
-  vi a = {2, 1, 1, 0, 2, 5, 4, 0, 2, 8, 7, 7, 9, 2, 0, 1, 9};
+  // this code works only for 0 < a[i] < 1
+    vi a = {0.4,0.5,0.2};
+  // vi a = {0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434};
   vi ans = bucketSort(a);
   printv(ans);
 
