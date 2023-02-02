@@ -45,6 +45,7 @@ void print(vi &a){
     vector<int > ans ;
 	vector<int > z;
 
+	//creating a new  string which follows the pattern  : pat + $ + text
 	string s = pat + '$' + txt;
 
 	for(int i = 0 ; i < s.size() ; i++){
@@ -52,7 +53,7 @@ void print(vi &a){
 		else{
 			int l = 0 ;
 			int r = i ;
-	
+				// finding the length of the longest prefix for current index i 
 				while(s[l] == s[r] && r < s.size()){
 					l++;
 					r++;
@@ -80,11 +81,6 @@ void print(vi &a){
  
 int main()
 {
-
-#ifndef ONLINE_JUDGE
-freopen("input.txt","r",stdin);
-freopen("output.txt","w",stdout);
-#endif
 
 string t = "batmanandrobinarebat";
 string p = "bat";

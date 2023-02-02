@@ -3,9 +3,9 @@ function psh(){
 
 	# clear the contents of the test file
 	rm test
-	rm input.txt
-	rm output.txt
-	echo -n "" > test.cpp
+	# rm input.txt
+	# rm output.txt
+	# echo -n "" > test.cpp
 
 	# Process for Github - push
 	echo "Enter Message :"
