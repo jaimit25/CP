@@ -57,10 +57,6 @@ int myAtoi(string s) {
 
 int main() {
 
-#ifndef ONLINE_JUDGE
-  freopen("input.txt", "r", stdin);
-  freopen("output.txt", "w", stdout);
-#endif
 
   // string s = "   -42";
   string s = "  words are 2";
