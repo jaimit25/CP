@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/zigzag-conversion/description/
+
+
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -82,10 +85,6 @@ int getMedian(vi &temps)
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-freopen("input.txt","r",stdin);
-freopen("output.txt","w",stdout);
-#endif
 
 
 string s = "PAYPALISHIRING";
