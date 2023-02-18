@@ -20,6 +20,8 @@
 
 
 
+
+
 using namespace std;
  
 template<class T>
@@ -42,88 +44,95 @@ void print2(T &a){
     
 }
 
- // "ABCB"
- // ["A","B","C","E"]
- // ["S","F","C","S"]
- // ["A","D","E","E"]
-
-
-//ABCCED
-// ["A","B","C","E"]
-// ["S","F","C","S"]
-// ["A","D","E","E"]
-
-
-// ABCEFSADEESE - mark visted notes as 0 while back-tracking
-// ["A","B","C","E"]
-// ["S","F","E","S"]
-// ["A","D","E","E"]
-
-
-bool flag = false;
-vector<int> row={-1,0,1,0};
-vector<int> col={0,1,0,-1};
-
-bool isPrevLocation(int r, int c , int prevr, int prevc){
-    if(r == prevr && c == prevc) return true;
-    return false;
+void printBoard(vector<string> &board){
+    for(auto it : board){
+        cout<<it<<endl;
+    }
 }
 
-bool isVisited(int r, int c,vector<vector<int>> &visited){
-    if(visited[r][c] == 1) return true;
-    return false;
+
+vector<string> getBoard(int n){
+         vector<string> board;
+        for(int i = 0 ; i < n ; i++){
+           string temp="";
+           for(int j = 0 ; j < n ; j++){
+                temp += ".";
+           }
+           board.push_back(temp);
+        }
+        return board;
 }
 
-void help(int ri, int ci, vector<vector<char>> &board, string &word,int wp,int prevR, int prevC,vector<vector<int>> &visited){
-
-     visited[ri][ci] = 1;
+bool isAttacked(vector<string> &board, int i , int j){
     int m = board[0].size();
     int n = board.size();
+
+        int r,c;
+
+        //checking col, if there is any queen in that column
+        for(int c = 0; c < n ; c++){
+            if(board[i][c] == 'Q') return true;
+        }
+
+        //checking row, if there is any queen in that column
+        for(int r = 0; r < n ; r++){
+             if(board[r][j] == 'Q') return true;
+        }
+          
+
+        //check top-left
+        for(r = i , c = j ; r>=0 && c>=0 ;r--,c--){
+            if(board[r][c]=='Q') return true;
+        }
+
+        //check top-right
+        for(r = i , c = j ; r >= 0 && c < m ;r--,c++){
+                 if(board[r][c]=='Q') return true;
+        }
+        
+
+        //check bottom-left 
+        for(r = i , c = j ; r < n && c >= 0 ;r++,c--){
+             if(board[r][c]=='Q') return true;
+        }
+
+        //check bottom-right
+        for(r = i , c = j ; r < n && c < m ;r++,c++){
+             if(board[r][c]=='Q') return true;
+        }
+
+
+    return false;
+}
+
+
+void fun(vector<string> &board, int i, vector<vector<string>> &ans,int n){
     
-    if(wp == word.size()){
-        flag = true;
-        return;
+    if(i == board.size()){
+        ans.push_back(board);
+        return ; 
     }
 
-    for(int i = 0 ; i < 4 ;i++){
-        int r = ri + row[i];
-        int c = ci + col[i];
-
-        
-            if(r >= 0 && r < n && c >= 0 && c < m && word[wp] == board[r][c]){
-                    if(!isPrevLocation(r,c,prevR,prevC)){
-                        if(!isVisited(r,c,visited)){
-                            help(r,c,board,word,wp+1,ri,ci,visited);
-                            visited[r][c]=0;
-                        }
-                        
-                    }
-                    
-            }  
-        
-        
-    }
-
-}
-
-bool exist(vector<vector<char>>& board, string word) {
-
-    int m = board[0].size();
-    int n = board.size();
-
-
-    for(int i = 0 ; i < n ; i++){
-        for(int j = 0 ; j < m ; j++){
-            if(word[0] == board[i][j]){
-                vector<vector<int>> visited(board.size(),vector<int>(board[0].size(),0));
-                help(i,j,board,word,1,-1,-1,visited);
-                if(flag) return true;
-            }
+    for(int j = 0 ; j < n ; j++){
+        if(!isAttacked(board,i,j)){
+            board[i][j] = 'Q';
+            fun(board,i+1,ans,n);
+            board[i][j] = '.';
         }
     }
-    return false;
+
 }
 
+
+vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string> > ans;
+        vector<string> board = getBoard(n);
+        // printBoard(board);
+        fun(board,0,ans,n);
+
+
+        return ans;
+}
 
  
 int main()
@@ -134,14 +143,9 @@ freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 #endif
 
-vvc board = {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
-string word = "ABCCED";
-
-if(exist(board,word)){
-    cout<<"Exist";
-}
-else cout<<"Does not Exist";
- 
+vvs ans = solveNQueens(4);
+cout<<ans.size()<<endl;
+print2(ans);
  
 return 0;
 }
