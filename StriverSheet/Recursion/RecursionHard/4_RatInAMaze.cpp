@@ -112,6 +112,11 @@ vector<string> findPath(vector<vector<int>> &m, int n) {
 int main()
 {
 
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin);
+freopen("output.txt","w",stdout);
+#endif
+
 vector<vector<int>> m=  {{1, 0, 0, 0},
                          {1, 1, 0, 1}, 
                          {1, 1, 0, 0},
