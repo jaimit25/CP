@@ -44,97 +44,71 @@ void print2(T &a){
     
 }
 
-void printBoard(vector<string> &board){
-    for(auto it : board){
-        cout<<it<<endl;
+int getMedian(vi &temps)
+{
+    int n = temps.size();
+    if(n%2 == 0){
+        return temps[n/2]+temps[n/2+1];
     }
+    return temps[(n/2)];
 }
 
 
-vector<string> getBoard(int n){
-         vector<string> board;
-        for(int i = 0 ; i < n ; i++){
-           string temp="";
-           for(int j = 0 ; j < n ; j++){
-                temp += ".";
-           }
-           board.push_back(temp);
-        }
-        return board;
-}
 
-bool isAttacked(vector<string> &board, int i , int j){
-    int m = board[0].size();
-    int n = board.size();
-
-        int r,c;
-
-        //checking col, if there is any queen in that column
-        for(int c = 0; c < n ; c++){
-            if(board[i][c] == 'Q') return true;
-        }
-
-        //checking row, if there is any queen in that column
-        for(int r = 0; r < n ; r++){
-             if(board[r][j] == 'Q') return true;
-        }
-          
-
-        //check top-left
-        for(r = i , c = j ; r>=0 && c>=0 ;r--,c--){
-            if(board[r][c]=='Q') return true;
-        }
-
-        //check top-right
-        for(r = i , c = j ; r >= 0 && c < m ;r--,c++){
-                 if(board[r][c]=='Q') return true;
-        }
-        
-
-        //check bottom-left 
-        for(r = i , c = j ; r < n && c >= 0 ;r++,c--){
-             if(board[r][c]=='Q') return true;
-        }
-
-        //check bottom-right
-        for(r = i , c = j ; r < n && c < m ;r++,c++){
-             if(board[r][c]=='Q') return true;
-        }
+bool flag = false;
+vector<int> row={-1,0,1,0};
+vector<int> col={0,1,0,-1};
+vector<char> dir = {'U','R','D','L'};
 
 
+bool isVisited(vector<vector<int>> &visited,int r, int c){
+    if(visited[r][c] == 1) return true;
     return false;
 }
 
+void help(vector<vector<int >> &mat, int ri , int ci, string &path, vector<string> &ans,vector<vector<int>> &visited){
+     visited[ri][ci] = 1 ;
+    int n = mat.size();
+    int m = mat[0].size();
 
-void fun(vector<string> &board, int i, vector<vector<string>> &ans,int n){
-    
-    if(i == board.size()){
-        ans.push_back(board);
-        return ; 
+    if(ri == n-1 && ci == m-1 ){
+        ans.push_back(path);
+        return; 
     }
 
-    for(int j = 0 ; j < n ; j++){
-        if(!isAttacked(board,i,j)){
-            board[i][j] = 'Q';
-            fun(board,i+1,ans,n);
-            board[i][j] = '.';
-        }
+    for(int k = 0; k < 4 ; k++){
+        
+        int r = ri + row[k];
+        int c = ci + col[k];
+        char d = dir[k];
+
+        if(r >= 0 && r < n && c >= 0 && c < m && mat[r][c] == 1){
+            if(!isVisited(visited,r,c)){
+             
+                path = path + d;
+                help(mat,r,c,path,ans,visited);
+                path.pop_back();
+                visited[r][c] = 0 ;
+            }
+        }   
     }
 
+    return;
 }
 
-
-vector<vector<string>> solveNQueens(int n) {
-        vector<vector<string> > ans;
-        vector<string> board = getBoard(n);
-        // printBoard(board);
-        fun(board,0,ans,n);
-
-
-        return ans;
+vector<string> findPath(vector<vector<int>> &m, int n) {
+               vector<string> ans;
+               if(m[0][0] == 0 ) return ans;
+               
+               
+               vector<vector<int>> visited(n,(vector<int>(n,0)));
+               string path ="";
+               help(m,0,0,path,ans,visited);
+               return ans;
 }
-
  
+
+
 int main()
 {
 
@@ -143,10 +117,19 @@ freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 #endif
 
-vvs ans = solveNQueens(4);
-cout<<ans.size()<<endl;
-print2(ans);
+vector<vector<int>> m=  {{1, 0, 0, 0},
+                         {1, 1, 0, 1}, 
+                         {1, 1, 0, 0},
+                         {0, 1, 1, 1}};
+
+vs ans = findPath(m,m.size());
+print(ans);
+
+
  
 return 0;
 }
+
+
+
  
