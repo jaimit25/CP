@@ -44,37 +44,59 @@ void print2(T &a){
     
 }
 
-
-
-//APPROACH 1- USING RECURSION 
-int help(string &s, int i , vector<string> &wordDict, bool &ans,vector<int> &dp){
-
-    if(i == s.size()) {
-        ans = true;
-        return 1;
-    }   
-
-    int res=0;
-    for(auto it : wordDict){
-        if(s.substr(i,it.size()) == it){
-          int res = help(s,i + it.size(),wordDict,ans,dp);
-          if(res == 1) break;
-        }
+int getMedian(vi &temps)
+{
+    int n = temps.size();
+    if(n%2 == 0){
+        return temps[n/2]+temps[n/2+1];
     }
-
-    return res;
+    return temps[(n/2)];
 }
 
-bool wordBreak(string s, vector<string>& wordDict) {
-    bool ans = false;
-    vector<int> dp(s.size(),-1);
+bool check(vector<vector<char>>& board, int row, int col, char c)
+    {
+        for(int i = 0; i < 9; i++) 
+            if(board[i][col] == c) 
+                return false;
 
-    int res = help(s,0,wordDict,ans,dp);
+        for(int i = 0; i < 9; i++) 
+            if(board[row][i] == c) 
+                return false;
 
-    return ans;
-}
-
+        int x0 = (row/3) * 3, y0 = (col/3) * 3;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                if(board[x0 + i][y0 + j] == c) return false;
+            }
+        }
+        return true;
+    }
+    
+    bool solve(vector<vector<char>>& board, int r, int c)
+    {
+        if(r==9)
+        return true;
+        if(c==9)
+        return solve(board, r+1, 0);
+        if(board[r][c]!='.')
+        return solve(board, r, c+1);
+        for(char i='1';i<='9';i++)
+        {
+            if(check(board, r, c, i))
+            {
+                board[r][c]=i;
+                if(solve(board, r, c+1))
+                return true;
+                board[r][c]='.';
+            }
+        }
+        return false;
+    }
+    void solveSudoku(vector<vector<char>>& board) {
+        solve(board, 0, 0);
+    }
  
+
 int main()
 {
 
@@ -83,21 +105,7 @@ freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 #endif
 
-
-// string s = "neetcode";
-// vs wd = {"neet","leet","code"};
-
-// string s  = "catsandog";
-// vs wd = {"cats","dog","sand","and","cat"};
-
-string s = "applepenapple";
-vs wd = {"apple","pen"};
-
-
-if(wordBreak(s,wd)){
-        cout<<"TRUE"<<endl;
-  }
-else cout<<"FALSE"<<endl;
+ 
  
 return 0;
 }
