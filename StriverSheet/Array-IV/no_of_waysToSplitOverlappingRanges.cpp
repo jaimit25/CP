@@ -51,7 +51,7 @@ int power(int i, int j, int p) {
   if (j == 1) {
     return i;
   }
-  long long ans = power(i, j / 2, p);
+  long long  ans = power(i, j / 2, p);
   ans = (ans * ans) % p;
   if (j % 2 == 1) {
     ans = (ans * i) % p;
@@ -69,20 +69,11 @@ int countWays(vector<vector<int>> &ranges) {
     }
   }
   int sz = ans.size();
-  cout<<sz<<endl;
   return power(2, sz, 1e9 + 7);
 }
 
 int main() {
 
-#ifndef ONLINE_JUDGE
-  freopen("input.txt", "r", stdin);
-  freopen("output.txt", "w", stdout);
-#endif
-
-  // vvi a = {{1,3},{10,20},{2,5},{4,8}};
-  vvi a = {{6,10},{5,15}};
-  cout<<countWays(a)<<endl;
 
   return 0;
 }
