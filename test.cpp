@@ -1,120 +1,216 @@
-// #include <bits/stdc++.h>
-// using namespace std;
+#include<bits/stdc++.h>
+#define ll long long int
+#define F first 
+#define S              second
+#define pb             push_back
+#define vi             vector <int>
+#define pii            pair <int, int>
+#define vpi            vector <pii>
+#define vpp            vector <pair<int, pii>>
+#define mii            map <int, int>
+#define mpi            map <pii, int>
+#define spi            set <pii>
+#define vs             vector<string>
+#define vvi            vector<vector<int>>
+#define vvs            vector<vector<string>>
+#define vvc            vector<vector<char>>
+#define vvll            vector<vector<long long>>
+#define svi            set<vector<int>> 
+#define si             set <int>
 
-// //Question 3
-// // vector<long long> circularSquare(int n, vector<vector<int>> mat, int q, vector<vector<int>> query)
-// // {
 
-// //   vector<long long> ans(q, 0);
-// //     for (int i = 0; i < q; i++)
-// //     {
-// //         int x = query[i][0], y = query[i][1], r = query[i][2];
-// //         long long sum = 0;
-// //         for (int j = 0; j < n; j++)
-// //         {
-// //             for (int k = 0; k < n; k++)
-// //             {
-// //                 if (abs(x - j) + abs(y - k) <= r)
-// //                 {
-// //                     sum += mat[j][k];
-// //                 }
-// //             }
-// //         }
 
-// //         ans[i] = sum;
-// //     }
-// //     return ans;
-// // }
 
-// // int main()
-// // {
-// //     int n;
-// //     cin >> n;
 
-// //     vector<vector<int>> mat(n);
+using namespace std;
+ 
+template<class T>
+void print(T &a){
+    for(auto it : a){
+        cout<<it<<" ";
+    }
+    cout<<endl;
+}
 
-// //     for (int i = 0; i < n; i++)
-// //     {
-// //         for (int j = 0; j < n; j++)
-// //         {
-// //             int val;
-// //             cin >> val;
+template<class T>
+void print2(T &a){
+    for(auto it : a){
+        for(auto i : it)
+        {
+            cout<<i<<" ";
+        }
+        cout<<endl;
+    }
+    
+}
 
-// //             mat[i].push_back(val);
-// //         }
-// //     }
+class Node{
+    int val;
+    Node*next;
+    Node(int data){
+        val = data;
+        next = NULL;
+    }
+};
 
-// //     int q;
-// //     cin >> q;
 
-// //     vector<vector<int>> query;
+class TreeNode{
+    public:
+        int data;
+        TreeNode* left;
+        TreeNode* right;
+        TreeNode(int val){
+            data = val;
+            left = NULL;
+            right = NULL;
+        }
+};
 
-// //     for (int i = 0; i < q; i++)
-// //     {
-// //         int x, y, r;
-// //         cin >> x >> y >> r;
+void preT(TreeNode* root){
+    if(root){
+        cout<<root->data<<" ";
+        preT(root->left);
+        preT(root->right);
+    }
+}
 
-// //         query.push_back({x, y, r});
-// //     }
+void inT(TreeNode* root){
+    if(root){
+        inT(root->left);
+        cout<<root->data<<" ";
+        inT(root->right);
+    }
+}
 
-// //     vector<long long> ans = circularSquare(n, mat, q, query);
+void postT(TreeNode* root){
+    if(root){
+        postT(root->left);
+        postT(root->right);
+        cout<<root->data<<" ";
+    }
+}
 
-// //     for (auto i : ans)
-// //     {
-// //         cout << i << endl;
-// //     }
-// // }
+void levelT(TreeNode *root){
 
-// Rick is a gardener and want to plant some flowers in a area with N*N spaces. Each space has a cost associated with it to plant flowers. And he also wants to plant flowers in a pattern.
+    queue<TreeNode*> q;
+    q.push(root);
 
-// He will give you a radius R and a cell location Xth row and Yth column (0th base indexing). He will plant the flowers in all the cells (X1, Y1) satisfying the condition of abs(X-X1) + abs(Y-Y1) <= R.
+    while(!q.empty()){
+        TreeNode *temp = q.front();
+        q.pop();
+        cout<<temp -> data<<" ";
 
-// He is trying to figure out the cost for several possible locations. He is not good with calculation so you need to answer Q queries of him planting flowers cost with location provided (X, Y, R).
+        if(temp->left){
+            q.push(temp->left);
+        }
+        if(temp->right){
+            q.push(temp->right);
+        }
+    }
 
-// Input format
-// First line contains an integer N.
+}
 
-// Next N lines contain N integers representing the cost of each cell.
+TreeNode* insert(vi& nodes){
+    if(nodes.size() == 0) {
+        return NULL;
+    }
+    TreeNode *root = new TreeNode(nodes[0]);
+    queue<TreeNode*>  q;
+    q.push(root);
 
-// Next line consists of an integer Q.
+    int i = 1 ;
+    while(i < nodes.size() && !q.empty()){
+        
+        TreeNode *nd = q.front();
+        q.pop();
+        
+        if(nodes[i] != -1){
+             nd->left = new TreeNode(nodes[i]);
+             q.push(nd->left);
+        }
+        i++;
+           
+        if(nodes[i] != -1){
+            nd->right = new TreeNode(nodes[i]);
+            q.push(nd->right);
+          }
+          i++;
+      }
+        return root;
+}
 
-// Next Q line contains three integers X, Y and R representing cell location and radius.
+TreeNode * pred(TreeNode * root){
+    TreeNode * nd = root;
+    while(nd->right != NULL && nd){
+        nd = nd->right;
+    }
+    return nd;
+}
 
-// Output format
-// For each query print the cost of planting flowers according to condition in a new line.
+void m_inorder(TreeNode * root1){
 
-// Sample Input 1
-// 3
+    TreeNode* head = root1;
 
-// 1 2 3
+    while(head){
 
-// 4 5 6
+        if(!head->left){
+            cout<<head->data<<" ";
+            head = head -> right; // right will always exist
+        }
+        else{
+            // left exist so just make link and go left
+            //     - Possiblity
+            //           - link already Exist 
+            //           - link do not Exist
 
-// 7 8 9
 
-// 2
+            //Try to get inorder-pred [if link exist and do not exist]
+            TreeNode * nd = head->left;
+            while(nd->right != NULL && nd->right != head){
+                nd = nd->right;
+            }
+            
+            //create link and go left
+            if(nd->right == NULL){
+                nd->right = head;
+                head = head->left;
+            }
 
-// 1 1 1
+            //link already exist [break]
+            if(nd->right == head){
+                nd->right = NULL;
+                cout<<head->data<<" ";
+                head = head->right;
+            }
+            
+        }
 
-// 0 0 3
+    }
 
-// Sample Output 1
-// 25
+ }
 
-// 36
 
-// Explanation
-// For first query sum will be of (1,1), (0,1), (2,1), (1,0) and (1,2)
 
-// The second query sum will be all cells except (2,2) cells because this is the only cell not satisfying the condition.
 
-// Constraints
-// 1 <= N <= 10^3
+void solve(){
+    vi nodes = {1,2,3,4,5,-1,-1,-1,-1,-1,6,};
+    TreeNode* root1 = insert(nodes);
+    m_inorder(root1);
 
-// 1 <= Cost <= 10^9
+    return ;
+}
+ 
+int main()
+{
 
-// 1 <= Q <= 10^3
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin);
+freopen("output.txt","w",stdout);
+#endif
 
-// 0 <= X,Y <= N-1
-
-// 0 <= R <= 10^9a
+solve();
+ 
+ 
+return 0;
+}
+ 
