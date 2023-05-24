@@ -17,9 +17,6 @@ public class CollectionFramework {
 
         //Type safe collection
         ArrayList<String> names = new ArrayList<String>();
-        names.add("Durgesh");
-        names.add("Sitara");
-        names.add("Roshni");
         names.add("Vandna");
         names.add("Vandna");
         System.out.println(names);
@@ -93,9 +90,6 @@ public class CollectionFramework {
 
 	ArrayList<String> names = new ArrayList<String>();
         names.add("Durgesh");
-        names.add("Sitara");
-        names.add("Roshni");
-        names.add("Vandna");
         names.add("Vandna");
         names.add("ABC");
 

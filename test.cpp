@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -44,160 +46,25 @@ void print2(T &a){
     
 }
 
-class Node{
-    int val;
-    Node*next;
-    Node(int data){
-        val = data;
-        next = NULL;
-    }
-};
 
 
-class TreeNode{
-    public:
-        int data;
-        TreeNode* left;
-        TreeNode* right;
-        TreeNode(int val){
-            data = val;
-            left = NULL;
-            right = NULL;
-        }
-};
 
-void preT(TreeNode* root){
-    if(root){
-        cout<<root->data<<" ";
-        preT(root->left);
-        preT(root->right);
-    }
-}
 
-void inT(TreeNode* root){
-    if(root){
-        inT(root->left);
-        cout<<root->data<<" ";
-        inT(root->right);
-    }
-}
+void solve()
+{
 
-void postT(TreeNode* root){
-    if(root){
-        postT(root->left);
-        postT(root->right);
-        cout<<root->data<<" ";
-    }
-}
+    string s ="jaimit is a decent name";
+    // getline(cin,s);
+    // cout<<s;
 
-void levelT(TreeNode *root){
+    stringstream ss(s);
 
-    queue<TreeNode*> q;
-    q.push(root);
-
-    while(!q.empty()){
-        TreeNode *temp = q.front();
-        q.pop();
-        cout<<temp -> data<<" ";
-
-        if(temp->left){
-            q.push(temp->left);
-        }
-        if(temp->right){
-            q.push(temp->right);
-        }
+    string temp;
+    while(ss >> temp){
+        cout<< temp <<" ";
     }
 
-}
 
-TreeNode* insert(vi& nodes){
-    if(nodes.size() == 0) {
-        return NULL;
-    }
-    TreeNode *root = new TreeNode(nodes[0]);
-    queue<TreeNode*>  q;
-    q.push(root);
-
-    int i = 1 ;
-    while(i < nodes.size() && !q.empty()){
-        
-        TreeNode *nd = q.front();
-        q.pop();
-        
-        if(nodes[i] != -1){
-             nd->left = new TreeNode(nodes[i]);
-             q.push(nd->left);
-        }
-        i++;
-           
-        if(nodes[i] != -1){
-            nd->right = new TreeNode(nodes[i]);
-            q.push(nd->right);
-          }
-          i++;
-      }
-        return root;
-}
-
-TreeNode * pred(TreeNode * root){
-    TreeNode * nd = root;
-    while(nd->right != NULL && nd){
-        nd = nd->right;
-    }
-    return nd;
-}
-
-void m_inorder(TreeNode * root1){
-
-    TreeNode* head = root1;
-
-    while(head){
-
-        if(!head->left){
-            cout<<head->data<<" ";
-            head = head -> right; // right will always exist
-        }
-        else{
-            // left exist so just make link and go left
-            //     - Possiblity
-            //           - link already Exist 
-            //           - link do not Exist
-
-
-            //Try to get inorder-pred [if link exist and do not exist]
-            TreeNode * nd = head->left;
-            while(nd->right != NULL && nd->right != head){
-                nd = nd->right;
-            }
-            
-            //create link and go left
-            if(nd->right == NULL){
-                nd->right = head;
-                head = head->left;
-            }
-
-            //link already exist [break]
-            if(nd->right == head){
-                nd->right = NULL;
-                cout<<head->data<<" ";
-                head = head->right;
-            }
-            
-        }
-
-    }
-
- }
-
-
-
-
-void solve(){
-    vi nodes = {1,2,3,4,5,-1,-1,-1,-1,-1,6,};
-    TreeNode* root1 = insert(nodes);
-    m_inorder(root1);
-
-    return ;
 }
  
 int main()
@@ -208,9 +75,10 @@ freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 #endif
 
-solve();
- 
+
+ solve();
  
 return 0;
 }
- 
+
+
