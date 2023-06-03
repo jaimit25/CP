@@ -1,4 +1,4 @@
-bulid-system.txt
+sublime-build.txt
 
 JAVA
 {
