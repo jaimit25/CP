@@ -2,6 +2,9 @@
 
 #### ⚡ Language 
  - CPP
+ - Java
+ - Python
+
 
 This repository contains solutions to Data Structure and Algorithm (DSA) problems from Leetcode and GeeksforGeeks. It also contains implementations of basic to advanced data structures, as well as VS Code and Sublime Text settings and snippets. This repository is a great resource for anyone looking to learn or improve their DSA skills.
 
