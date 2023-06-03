@@ -60,7 +60,7 @@ void solve()
     stringstream ss(s);
 
     string temp;
-    while(ss >> temp){
+    while(getline(ss,temp,' ')){
         cout<< temp <<" ";
     }
 
