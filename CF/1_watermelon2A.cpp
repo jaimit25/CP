@@ -46,24 +46,22 @@ void print2(T &a){
     
 }
 
-bool isVowel(char ch){
-    vector<char> vowel = {'A', 'O','Y', 'E', 'U', 'I','a','o','y','e','u','i'};
-    return find(vowel.begin(),vowel.end(),ch) != vowel.end();
-}
 
-void solve()
-{
-    string s ;
-    cin>>s;
-    string temp = "";
 
-    if(s.length()){
-        for(int i = 0 ; i < s.length(); i++){
-            if(!isVowel(s[i])) temp =  temp + "." + (char)tolower(s[i]) ;
-        }
+void solve(){
+
+   int w;
+   cin >> w;
+
+    if (w % 2 == 0 && w > 2) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
     }
-    cout<<temp<<endl;
+
 }
+
+
  
 int main()
 {
@@ -73,8 +71,8 @@ freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 #endif
 
- solve();
- 
+solve();
+
 return 0;
 }
 

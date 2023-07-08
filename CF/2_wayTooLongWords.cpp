@@ -46,23 +46,24 @@ void print2(T &a){
     
 }
 
-bool isVowel(char ch){
-    vector<char> vowel = {'A', 'O','Y', 'E', 'U', 'I','a','o','y','e','u','i'};
-    return find(vowel.begin(),vowel.end(),ch) != vowel.end();
-}
+
+
+
 
 void solve()
 {
-    string s ;
-    cin>>s;
-    string temp = "";
-
-    if(s.length()){
-        for(int i = 0 ; i < s.length(); i++){
-            if(!isVowel(s[i])) temp =  temp + "." + (char)tolower(s[i]) ;
-        }
+    int n ; cin>>n;
+    for(int i = 0  ; i < n ; i ++){
+        string s ;
+        cin>>s;
+        if(s.size() > 10){
+            int sz = s.size();
+            int mid = sz - 2;
+            cout<< s[0]<< mid << s[sz-1]<<endl;
+        }   
+        else cout<<s<<endl;
     }
-    cout<<temp<<endl;
+
 }
  
 int main()

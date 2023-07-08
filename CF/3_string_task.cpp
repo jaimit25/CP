@@ -51,6 +51,8 @@ bool isVowel(char ch){
     return find(vowel.begin(),vowel.end(),ch) != vowel.end();
 }
 
+
+
 void solve()
 {
     string s ;
