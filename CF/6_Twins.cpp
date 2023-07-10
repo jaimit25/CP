@@ -52,9 +52,34 @@ void print2(T &a){
 
 void solve()
 {
+        int n ; cin>>n;
+        vector<int> coins;
+        int count = 0,ps = 0 ;
+
+        int sum = 0 ;
+
+        for(int i = 0 ; i < n ; i ++){
+            int coin;
+            cin>>coin;
+            sum = sum + coin;
+            coins.push_back(coin);
+        }
 
 
-}
+        sum /= 2;
+        sort(coins.begin(),coins.end());
+
+        for(int i = n-1 ; i >= 0 ; i--){
+            ps += coins[i];
+            count++;
+            if(ps > sum) break;
+        }
+        cout<<count;
+
+ }
+
+
+
  
 int main()
 {

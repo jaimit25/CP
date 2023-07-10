@@ -52,7 +52,22 @@ void print2(T &a){
 
 void solve()
 {
+    string a,b;
+    cin>>a>>b;
 
+    for(int i = 0 ; i < a.length();i++){
+        
+        if((int)tolower(a[i]) > (int)tolower(b[i]) ){
+            cout<<1;
+            return;
+        }
+        else if((int)tolower(a[i]) < (int)tolower(b[i]) ){
+            cout<<-1;
+            return;
+        }
+
+    }
+    cout<<0;
 
 }
  

@@ -53,6 +53,25 @@ void print2(T &a){
 void solve()
 {
 
+    string s ;
+    cin>>s;
+
+    stringstream ss(s);
+    string temp;
+    vector<string> vc;
+
+
+    while(getline(ss,temp,'+')){
+        vc.push_back(temp);
+    }
+
+    sort(vc.begin(),vc.end());
+    temp = "";
+    for(auto it : vc){
+        temp = temp + it+"+";
+    }
+    temp.pop_back();
+    cout<<temp;
 
 }
  
