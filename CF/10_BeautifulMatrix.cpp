@@ -1,5 +1,4 @@
 
-
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -52,13 +51,45 @@ void print2(T &a){
 
 void solve()
 {
+    int n = 5; 
+    int temp = 0 ; 
+    vvi matrix(5,vector<int> (5,0));
+    int r,c;
+    for(int i = 0 ; i < n; i++){
+        for(int j = 0 ; j < n  ;j ++){
+            cin>>temp;
+            matrix[i][j] = temp;
+
+            if(matrix[i][j] == 1){
+                r = i;
+                c = j ;
+            }
+
+        }
+    }
 
 
-    int n , m ; cin>> n >> m;
-    int k = min(m,n);
+    int o = 0 ;
+    
 
-    if(k%2 == 0) cout<<"Malvika";
-    else cout <<"Akshat";
+    if(r < 2){
+        if(r == 0) o += 2;
+        else if(r == 1) o++;
+         
+    }else if(r > 2){
+        if(r == 3) o++;
+        else if(r == 4) o +=2;
+    }
+
+    if(c < 2){
+        if(c == 0) o += 2;
+        else if(c == 1) o++;
+         
+    }else if(c > 2){
+        if(c == 3) o++;
+        else if(c == 4) o +=2;
+    }
+    cout<<o;
 
 }
  

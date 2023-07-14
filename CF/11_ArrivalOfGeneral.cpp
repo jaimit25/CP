@@ -52,13 +52,36 @@ void print2(T &a){
 
 void solve()
 {
+    int n;
+    cin>>n;
 
+    int mini,maxi,maxv,minv;
 
-    int n , m ; cin>> n >> m;
-    int k = min(m,n);
+    maxv = INT_MIN;
+    minv = INT_MAX;
 
-    if(k%2 == 0) cout<<"Malvika";
-    else cout <<"Akshat";
+    for(int i = 0 ; i < n ; i++){
+        
+        int temp;
+        cin>>temp;
+        if(minv >= temp){
+            mini = i;
+            minv = temp;
+        }
+
+        if(maxv < temp){
+            maxi = i;
+            maxv = temp;
+        }
+    }
+
+    if(mini < maxi){
+        cout<< maxi+ (n-1-mini) - 1;
+    }
+    else{
+        cout<<maxi+(n-1-mini);
+    }
+
 
 }
  

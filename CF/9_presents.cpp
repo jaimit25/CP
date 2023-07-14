@@ -53,12 +53,19 @@ void print2(T &a){
 void solve()
 {
 
+    int n ;
+    cin>>n;
+    int num ; 
 
-    int n , m ; cin>> n >> m;
-    int k = min(m,n);
+    vector<int> v (n+1);
 
-    if(k%2 == 0) cout<<"Malvika";
-    else cout <<"Akshat";
+    for(int i= 1 ; i  <= n ; i++){
+        cin>>num;
+        v[num] = i;
+    }
+    for(int i = 1 ; i <= n ; i++){
+        cout<<v[i] << " ";
+    }
 
 }
  
