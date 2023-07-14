@@ -53,7 +53,32 @@ void print2(T &a){
 void solve()
 {
 
+    int n ; cin >> n ;
+    vvi teams;
 
+
+    while(n){
+        int h,g;
+        vi temp;
+        cin>>h>>g;
+        temp.push_back(h);
+        temp.push_back(g);
+        teams.push_back(temp);
+        n--;
+    }
+    int count = 0 ;
+    for(int i = 0 ; i < teams.size();i++)
+    {
+        for(int j = 0 ; j < teams.size();j++){
+            if(i!=j){
+                if(teams[i][0] == teams[j][1]){
+                    count++;
+                }
+
+            }
+        }
+    }
+    cout<<count;
 }
  
 int main()
