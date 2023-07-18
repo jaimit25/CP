@@ -52,36 +52,22 @@ void print2(T &a){
 
 void solve()
 {
-    long long int x1,x2,y1,y2; // Already given
-    long long int x3,x4,y3,y4; // yet to found
+    int n,m,a,b;
+    cin>>n>>m>>a>>b;
 
-    cin>>x1>>y1>>x2>>y2;
+    if(m*a > b){
 
-    int dx = abs(x1-x2);
-    int dy = abs(y1-y2);
+        int remain = n%m *a;
 
-    if(dx == dy ){
-        //diagonal top right coordinate
-        cout<<x1<<" "<<y2<<" "<<x2<<" "<<y1;
-    }   
-    else if(x1 == x2){
-        // left top coordinate
-        x3 = x4 = x1 + dy;
-        y3 = y1;
-        y4 = y2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
+        if(remain > b) cout<<n/m*b+b ;
+        else cout<<n/m*b+remain;
+
+
+
     }
-    else if(y1 == y2){
-        // right bottom coordinate
-        y3 = y4 = y1 + dx;
-        x3 = x1;
-        x4 = x2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
+    else{
+        cout<<n*a;
     }
-    else {
-        cout<<-1;
-    }
-
 }
  
 int main()

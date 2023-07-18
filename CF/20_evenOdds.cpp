@@ -52,34 +52,16 @@ void print2(T &a){
 
 void solve()
 {
-    long long int x1,x2,y1,y2; // Already given
-    long long int x3,x4,y3,y4; // yet to found
+    long long  n , k ;
+    cin>>n>>k;
 
-    cin>>x1>>y1>>x2>>y2;
+    if(k <= (n+1)/2){
+        //odd case
+        cout<<2*k-1;
 
-    int dx = abs(x1-x2);
-    int dy = abs(y1-y2);
-
-    if(dx == dy ){
-        //diagonal top right coordinate
-        cout<<x1<<" "<<y2<<" "<<x2<<" "<<y1;
-    }   
-    else if(x1 == x2){
-        // left top coordinate
-        x3 = x4 = x1 + dy;
-        y3 = y1;
-        y4 = y2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
-    }
-    else if(y1 == y2){
-        // right bottom coordinate
-        y3 = y4 = y1 + dx;
-        x3 = x1;
-        x4 = x2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
-    }
-    else {
-        cout<<-1;
+    }else{
+        //even case (k-(n+1)/2) : gives relative position where the number lies in even range or on right side & multiply 2 gives kth even number
+        cout<<(k - (n+1)/2)*2;
     }
 
 }

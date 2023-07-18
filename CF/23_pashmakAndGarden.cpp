@@ -52,13 +52,13 @@ void print2(T &a){
 
 void solve()
 {
-    long long int x1,x2,y1,y2; // Already given
-    long long int x3,x4,y3,y4; // yet to found
+    int x1,x2,y1,y2; // Already given
+    int x3,x4,y3,y4; // yet to found
 
     cin>>x1>>y1>>x2>>y2;
 
-    int dx = abs(x1-x2);
-    int dy = abs(y1-y2);
+    int dx = x1-x2;
+    int dy = y1-y2;
 
     if(dx == dy ){
         //diagonal top right coordinate
@@ -66,17 +66,17 @@ void solve()
     }   
     else if(x1 == x2){
         // left top coordinate
-        x3 = x4 = x1 + dy;
+        x3 = x4 = x1 + abs(y1-y2);
         y3 = y1;
         y4 = y2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
+        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4<<endl;
     }
     else if(y1 == y2){
         // right bottom coordinate
-        y3 = y4 = y1 + dx;
+        y3 = y4 = y1 + abs(x1-x2);
         x3 = x1;
         x4 = x2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
+        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4<<endl;
     }
     else {
         cout<<-1;

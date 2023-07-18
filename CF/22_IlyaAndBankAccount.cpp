@@ -48,39 +48,41 @@ void print2(T &a){
 
 
 
+int remove_ld(int n){
+    // remove last digit
+    string s = to_string(n);
+    s.pop_back();
+    return stoi(s);
+}
+
+int remove_sld(int n){
+    // remove second last digit
+    string s = to_string(n);
+    int sz = s.size();
+    char temp = s[sz-1];
+    s.pop_back();
+    s.pop_back();
+    return stoi(s+temp);
+}
+
 
 
 void solve()
 {
-    long long int x1,x2,y1,y2; // Already given
-    long long int x3,x4,y3,y4; // yet to found
 
-    cin>>x1>>y1>>x2>>y2;
+    int n ;
+    cin>>n;
+  
 
-    int dx = abs(x1-x2);
-    int dy = abs(y1-y2);
+    if(n < 0){
 
-    if(dx == dy ){
-        //diagonal top right coordinate
-        cout<<x1<<" "<<y2<<" "<<x2<<" "<<y1;
-    }   
-    else if(x1 == x2){
-        // left top coordinate
-        x3 = x4 = x1 + dy;
-        y3 = y1;
-        y4 = y2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
-    }
-    else if(y1 == y2){
-        // right bottom coordinate
-        y3 = y4 = y1 + dx;
-        x3 = x1;
-        x4 = x2;
-        cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4;
-    }
-    else {
-        cout<<-1;
-    }
+        int rld = remove_ld(n);
+        int rsld = remove_sld(n);
+
+        if(rld > rsld) cout<<rld;
+        else cout<<rsld;
+    }else cout<< n ;
+
 
 }
  
