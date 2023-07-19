@@ -1,4 +1,4 @@
-
+    
 
 #include<bits/stdc++.h>
 #define ll long long int
@@ -47,49 +47,35 @@ void print2(T &a){
 }
 
 
-
-void sort2DVector(vvi& vec) {
-    for (auto& innerVec : vec) {
-        sort(innerVec.begin(), innerVec.end());
-    }
+bool compare(vi&a, vi&b){
+    return (a[0] < b[0]);
 }
 
 
 void solve()
 {
-    int n ; 
-    cin>>n;
 
-    vi s(n+1,0);
-    int i = 1 ;
+    int s , n ;
+    cin>>s>>n; 
 
-    while(cin>>s[i])
-        i++;
-    
-    
-    vvi v(4);
-    for(int i = 1 ; i <= n ; i++){
-        if(s[i] == 1){
-            v[1].push_back(i);
+    vvi v;
+
+    for(int i = 0 ; i < n ; i++){
+        int ds,b;
+        cin>>ds>>b;
+        v.push_back({ds,b});
+    }
+    sort(v.begin(),v.end(),compare);
+
+   for(auto it : v){
+        if(it[0]< s){
+            s += it[1];
+        }else {
+            cout<<"NO";
+            return;
         }
-        else if(s[i] == 2) {
-            v[2].push_back(i);
-        }else v[3].push_back(i);
-    }
-
-    sort2DVector(v);
-    int minm = min(v[1].size(),v[2].size());
-    int v3size = v[3].size();
-    minm = std::min(minm,v3size);
-
-    cout<<minm<<endl;
-
-   i = 0;
-    while(minm){
-        cout<<v[1][i]<<" "<< v[2][i]<<" "<<v[3][i]<<endl;
-        minm--;
-        i++;
-    }
+   }
+   cout<<"YES";
 
 }
  

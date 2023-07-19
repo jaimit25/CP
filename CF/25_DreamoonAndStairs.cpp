@@ -48,48 +48,30 @@ void print2(T &a){
 
 
 
-void sort2DVector(vvi& vec) {
-    for (auto& innerVec : vec) {
-        sort(innerVec.begin(), innerVec.end());
-    }
-}
 
 
 void solve()
 {
-    int n ; 
-    cin>>n;
 
-    vi s(n+1,0);
-    int i = 1 ;
+    int n , m; 
+    cin >> n >> m;
+    int x ; 
 
-    while(cin>>s[i])
-        i++;
     
-    
-    vvi v(4);
-    for(int i = 1 ; i <= n ; i++){
-        if(s[i] == 1){
-            v[1].push_back(i);
+    if(m > n )   {
+         cout<< -1;
+         return;
+    }
+    else{
+        if(n%2 == 0) x = n/2;
+        else x = (n/2) + 1;
+
+        while(x%m != 0){
+            x++;
         }
-        else if(s[i] == 2) {
-            v[2].push_back(i);
-        }else v[3].push_back(i);
     }
-
-    sort2DVector(v);
-    int minm = min(v[1].size(),v[2].size());
-    int v3size = v[3].size();
-    minm = std::min(minm,v3size);
-
-    cout<<minm<<endl;
-
-   i = 0;
-    while(minm){
-        cout<<v[1][i]<<" "<< v[2][i]<<" "<<v[3][i]<<endl;
-        minm--;
-        i++;
-    }
+    cout<<x;
+     
 
 }
  
