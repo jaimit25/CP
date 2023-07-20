@@ -39,7 +39,7 @@ void print2(T &a){
     for(auto it : a){
         for(auto i : it)
         {
-            cout<<i<<" ";
+            cout<<i;
         }
         cout<<endl;
     }
@@ -48,10 +48,35 @@ void print2(T &a){
 
 
 
-
-
 void solve()
 {
+
+int r,c;
+cin>>r>>c;
+
+vector<vector<char>> grid(r,vector<char>(c,'.'));
+int flag = 0;
+
+
+for(int i = 0 ; i < r ; i++){
+    if(i%2 == 0){
+        //Even grid
+        for(int j = 0 ; j < c ; j++){
+            grid[i][j]='#';
+        }
+    }else{
+        if(flag){
+             grid[i][0] = '#';
+            flag = 0;
+        }else {
+            grid[i][c-1] = '#';
+            flag = 1;
+        }
+        
+    }
+}
+
+print2(grid);
 
 
 }
@@ -68,5 +93,6 @@ freopen("output.txt","w",stdout);
  
 return 0;
 }
+
 
 

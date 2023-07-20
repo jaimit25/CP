@@ -52,9 +52,36 @@ void print2(T &a){
 
 void solve()
 {
+    int n ;
+    cin>>n; 
+    vi v(n);
 
+    int i =0 ; 
+    int even_c =0 ,odd_c = 0 ;
 
-}
+    while(cin>>v[i]){
+        if(v[i]%2 == 0)even_c++;
+        else odd_c++;
+        i++;
+    }
+
+    if(even_c == 1){
+        //find even number index
+        for(int i = 0 ; i < n ;i ++){
+            if(v[i]%2 == 0 ) cout<< i+1;
+            return;
+        }
+    }else{
+        //find odd number index
+        for(int i = 0 ; i < n ;i ++){
+            if(v[i]%2 != 0 ) cout<< i+1;
+            return;
+        }
+    }
+
+    
+
+}   
  
 int main()
 {

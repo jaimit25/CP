@@ -1,5 +1,7 @@
 
 
+
+
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -53,6 +55,32 @@ void print2(T &a){
 void solve()
 {
 
+    int n , d ;
+    cin>>n>>d;
+    vi sv(n);
+    int i =0 ; 
+    int song = 0 ; 
+
+
+    while(cin>>sv[i]){
+        song += sv[i];
+        i++;
+    }
+
+    // remove one song break if song is sung at last.
+    int song_break = n*10-10;
+
+    int sng_t = song + song_break;
+    int remaining = d-sng_t;
+
+
+    if(song + song_break > d){
+        cout<<-1;
+    }
+    else{
+        cout<<(remaining+song_break)/5;
+    }
+
 
 }
  
@@ -68,5 +96,6 @@ freopen("output.txt","w",stdout);
  
 return 0;
 }
+
 
 
