@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -46,9 +48,37 @@ void print2(T &a){
 
 
 
+
+
 void solve()
 {
 
+    int r,c ;
+    cin>>r>>c;
+    vi vr(r),vc(c);
+
+    for(int i = 0 ; i < r ; i++){
+        string s ; 
+        cin>>s;
+        for(int j = 0  ; j < c ; j++ ){
+            if(s[j] =='S'){
+                vr[i] = 1;
+                vc[j] = 1;
+            }
+        }
+    }
+
+    int count =0 ;
+
+    for(int i = 0 ; i < r ; i++){
+        for(int j = 0  ; j < c ; j++ ){
+            if(vr[i] == 0 || vc[j] == 0){
+                count++;
+            }
+        }
+    }
+
+cout<<count;
 
 }
  
