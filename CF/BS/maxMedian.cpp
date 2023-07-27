@@ -73,7 +73,11 @@ void print2(T &a){
 
 
 void solve()
-{
+{	
+
+
+	// Assumption to find max median Array [0,0,M,M,M]; initial values are 0 and Later all the values match
+	// with the median Value. Given size of Array(n) sum of Array(s).
     int n , s ;
     cin>>n>>s;
 

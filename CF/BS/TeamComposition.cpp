@@ -44,8 +44,6 @@ int dy[] = {0,1,0,-1};
 int ddx[] = {1,0,-1,0,1,-1,-1,1}; 
 int ddy[] = {0,1,0,-1,1,-1,1,-1}; 
 
-
-
 using namespace std;
  
 template<class T>
@@ -69,30 +67,13 @@ void print2(T &a){
 }
 
 
-
-
-
 void solve()
 {
-    int n , s ;
-    cin>>n>>s;
+    long long a, b;
+    cin >> a >> b;
+    cout << min(min(a, b), (a + b) / 4) << '\n';
 
-
-    long long l = 0 ;
-    long long r = s+1;
-    long long m = n/2+1;
-
-    while(r-l>1){
-        long long med = l + (r-l)/2;
-        if(m*med <= s){
-            l = med;
-        }
-        else{
-            r = med;
-        }
-    }
-    cout<<l<<endl;
-
+   
 }
  
 int main()
@@ -102,11 +83,15 @@ fastread();
 freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 #endif
-int t; cin>>t;
 
-while(t){
- solve();t--;
-}
+
+    int t ;
+    cin>>t;
+    while(t)
+    {
+        solve();
+        t--;
+    }
  
 return 0;
 }
