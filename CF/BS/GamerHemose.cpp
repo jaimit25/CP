@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -67,8 +69,39 @@ void print2(T &a){
 }
 
 
+
+
+
 void solve()
 {
+    int t;
+    cin>>t;
+    while(t){
+        long long n , h ;
+        int  i = 0; 
+        cin>>n>>h; // no of weapons & health of Enemy
+        vector<long long> a;
+        for( i =0 ; i < n ; i++){
+            long long temp; cin>>temp;
+            a.push_back(temp);
+        }
+
+        sort(a.begin(),a.end());
+        int x = a[n-1];
+        int y = a[n-2];
+
+
+        if(h%(x+y) == 0 ){
+            cout<<2*h/(x+y);
+        }
+        else if (h % (x + y) <= x) {
+            cout << 2 * (h / (x + y)) + 1;
+        } else {
+            cout << 2 * (h / (x + y)) + 2;
+        }
+cout<<endl;
+        t--;    
+    }
 
 
 }

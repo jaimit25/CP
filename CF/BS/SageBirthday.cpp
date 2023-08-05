@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -70,6 +72,29 @@ void print2(T &a){
 void solve()
 {
 
+    int n ;
+    cin>>n; 
+    int i = 0 ; 
+    vi is(n);
+    while(cin>>is[i])i++;
+
+    if(n==2){
+        cout<<0<<endl;
+        print(is);
+        return;
+    }
+    sort(all(is));
+    for(int i = 1 ; i < n-1 ; i+=2){
+            swap(is[i],is[i-1]) ;
+    }
+
+    int ans = 0;  
+    for(int i = 1 ; i < n-1 ; i++ )
+           if(is[i] < is[i-1] && is[i] < is[i+1]) ++ans ;
+
+    cout << ans << endl ;
+    for(auto x : is) cout << x << " " ;
+    cout << endl ;
 
 }
  

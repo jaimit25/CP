@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 #define ll long long int
 #define F first 
@@ -67,9 +69,38 @@ void print2(T &a){
 }
 
 
+
+
+
 void solve()
 {
 
+    int t;
+    cin>>t;
+
+    while(t){
+        int  n ,k,sz;
+        cin>>n>>k;
+        vi x;
+        sz = k;
+
+        while(sz){
+            int temp ; cin>>temp;
+            x.push_back(temp);
+            sz--;
+        }
+        sort(all(x));
+        int cat = 0;
+        int cnt = 0; 
+
+        for(int i = k-1 ; i >=0 ; i--){
+            if(x[i] <= cat) break;
+            cat += n-x[i];
+            cnt++;
+        }
+        cout<<cnt<<endl;
+        t--;
+    }
 
 }
  
