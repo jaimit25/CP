@@ -1,15 +1,18 @@
+
 #include<bits/stdc++.h>
+#define vi vector<int>
+
 using namespace std;
- 
+
 void solve()
 {
-
-
+    vi ps = {1,2,3};
+    
 }
  
 int main()
 {
-fastread();
+
 #ifndef ONLINE_JUDGE
 freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
@@ -19,5 +22,6 @@ solve();
  
 return 0;
 }
+
 
 
