@@ -6,23 +6,23 @@ using namespace std;
 
 void solve()
 {
+    
+    vi a = {1,1,1,1};
+    int n = a.size();
+    int k = 2;
 
-    // // vi a = {1,1,2,2,2,1};
-    // vi a = {3,2,1,2,1,4,5,8,6,7,4,2};
-    vi a = {1};
+    int count = 0;
 
-    int maxDist = 0;
-    unordered_map<int,int> mp; //{ele,ind}
-
-    for(int i = 0 ; i < a.size(); i++){
-        if(mp.find(a[i]) == mp.end()){
-            //first time seen
-            mp[a[i]] = i;
-        }else{
-            maxDist = max(maxDist,i-mp[a[i]]);
+    unordered_map<int,int> mp;
+    for(int i =0; i < n ; i ++){
+        int n = k - a[i];
+        if(mp.find(n) != mp.end()){
+            count += mp[n];
         }
+         mp[a[i]]++;
     }
-    cout<<maxDist;
+    return count;
+    cout<<count;
 }
  
 int main()
