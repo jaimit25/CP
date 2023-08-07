@@ -27,8 +27,12 @@ using namespace std;
 
 void solve()
 {
-	// ps[r] = ps[l-1] + sum[l...r];
-	
+	// ps[r] = ps[l-1] + sum[l...r]; 
+	// for subArray with sum 0 ps[r] = ps[l-1] + 0;
+	// so we just have to find(ps[r]) where, ps[r] == ps[l-1];
+	// ps[l-1] will be stored in map {ps,indexOfFirstOccurence};
+
+
 	vi a = {15,-2,2,-8,1,7,10,23};
 	cout<<maxlen(a,a.size());
 
