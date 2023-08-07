@@ -5,21 +5,22 @@
 using namespace std;
 
 
+
 int findSubArraySum(int Arr[], int N, int k)
-{
-        unordered_map<int,int> mp;
+    {
+       unordered_map<int,int> mp; // {prefixSum:noOfOccurr}
 
         int sum =0 ; 
+        int count = 0 ;
         for(int i =0 ; i < N ;i++){
             sum += Arr[i];
             if(sum == k) count++;
-            if(mp.find(mp[i]-k) != mp.end()){
-                count+=mp[mp[i]-k];
+            if(mp.find(sum-k) != mp.end()){
+                count+=mp[sum-k]; 
             }
-            mpp[currSum]++;
+            mp[sum]++;
         }
         return count;
-        
 }
 
 
