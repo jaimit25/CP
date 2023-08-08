@@ -11,18 +11,16 @@ vi a = {4, 2, 2, 6, 4};
 int m = 6;
 
 unordered_map<int,int> mp;
-    
+	
 int xorAns = 0  ;int count =0 ; 
 
 for(auto it : a){
-    xorAns ^= it;
-    if(xorAns == m)count++;
-    if(mp.find(xorAns^m) != mp.end())
-        count += mp[xorAns^m];
-    mp[xorAns]++;
+	xorAns ^= it;
+	if(xorAns == m)count++;
+	if(mp.find(xorAns^m) != mp.end())
+		count += mp[xorAns^m];
+	mp[xorAns]++;
 }
-
-cout<<count;
 
 }
  

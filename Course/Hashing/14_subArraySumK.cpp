@@ -27,6 +27,7 @@ int findSubArraySum(int Arr[], int N, int k)
 void solve()
 {
 
+    
 
 }
  
