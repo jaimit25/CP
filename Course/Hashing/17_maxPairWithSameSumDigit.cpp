@@ -83,7 +83,7 @@ ll sm(ll no){
 void solve()
 {
     // vector<ll> b = {51, 71, 17, 42};
-    vector<ll> b = {51 ,32 ,43 };
+    vector<ll> b = {51 ,32 ,43};
     unordered_map<ll,ll> mp; // sum : ele
     ll maxPair = -1; 
 
