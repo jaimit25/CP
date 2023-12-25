@@ -22,7 +22,21 @@ using namespace std;
 
 void solve(){
 
+  vi a = {1,2,3,4};
+  vi b = {1,4};
+  set<int> s;
 
+  for(auto it  : a){
+    s.insert(it);
+  }
+
+  for(auto it : b){
+    if(s.find(it) == s.end()){
+      cout<<"false";
+      return;
+    }
+  }
+  cout<<"true";
 
 
 }
